@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-
+[README.md](..%2F..%2F..%2F..%2Fnotifications-page-main%2FREADME.md)
 First, run the development server:
 
 ```bash
