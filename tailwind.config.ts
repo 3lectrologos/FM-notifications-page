@@ -20,8 +20,11 @@ const config: Config = {
       }
     },
     screens: {
-      'desktop': '1440px'
-    }
+      'desktop': '768px'
+    },
+    boxShadow: {
+      'card': '0px 20px 60px 0px rgba(73, 97, 168, 0.05)'
+    },
   },
   plugins: [],
 }
