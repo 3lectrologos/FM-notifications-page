@@ -332,7 +332,7 @@ export default function Home() {
 
   return (
     <div className={twMerge(
-      `min-h-screen min-w-fit text-[14px] text-dark-grayish-blue font-medium`,
+      `min-h-screen min-w-fit text-[14px] text-dark-grayish-blue font-medium tracking-[-0.01em]`,
       `desktop:bg-very-light-grayish-blue desktop:text-[16px]`,
     )}>
       <div className={twMerge(
@@ -340,7 +340,7 @@ export default function Home() {
       )}>
         <div className={twMerge(
           `flex flex-col bg-white w-full max-w-[500px] px-4`,
-          `desktop:p-[30px] desktop:pb-0 desktop:w-[730px] desktop:max-w-[730px] desktop:shadow-card desktop:rounded-[15px]`
+          `desktop:p-[30px] desktop:pt-[33px] desktop:pb-0 desktop:w-[730px] desktop:max-w-[730px] desktop:shadow-card desktop:rounded-[15px]`
         )}>
           <Title
             numNotifications={unread.filter((unread) => unread).length}
