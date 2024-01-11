@@ -15,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.className}>{children}</body>
+      <body className={plusJakartaSans.className}>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
