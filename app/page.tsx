@@ -332,7 +332,7 @@ export default function Home() {
 
   return (
     <div className={twMerge(
-      `min-h-screen min-w-fit text-[14px] text-dark-grayish-blue font-medium tracking-[-0.01em]`,
+      `min-h-screen min-w-fit text-[14px] text-dark-grayish-blue font-medium`,
       `desktop:bg-very-light-grayish-blue desktop:text-[16px]`,
     )}>
       <div className={twMerge(
