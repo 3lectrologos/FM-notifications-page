@@ -3,6 +3,7 @@
 import { twMerge } from 'tailwind-merge'
 import Image from 'next/image'
 import { useState } from 'react'
+import Link from 'next/link'
 
 type BaseNotificationProps = {
   name: string
@@ -53,9 +54,12 @@ function UnreadIndicator({ unread }: { unread: boolean }) {
   )
 }
 
-function NotificationTime({ when }: { when: string }) {
+function NotificationTime({ when, className='' }: { when: string, className?: string }) {
   return (
-    <div className={`text-grayish-blue`}>
+    <div className={twMerge(
+      ``,
+      className,
+    )}>
       {when}
     </div>
   )
@@ -64,9 +68,11 @@ function NotificationTime({ when }: { when: string }) {
 function NotificationSubject({ name }: { name: string }) {
   return (
     <>
-      <span className={`font-extrabold text-very-dark-blue hover:text-blue cursor-pointer`}>
-        {name}
-      </span>
+      <Link href=''>
+        <span className={`font-extrabold text-very-dark-blue hover:text-blue`}>
+          {name}
+        </span>
+      </Link>
       <span className={`pr-1.5`}>
       </span>
     </>
@@ -76,9 +82,11 @@ function NotificationSubject({ name }: { name: string }) {
 function NotificationPost({ name }: { name: string }) {
   return (
     <>
-      <span className={`font-bold text-dark-grayish-blue hover:text-blue cursor-pointer desktop:font-extrabold`}>
-        {name}
-      </span>
+      <Link href=''>
+        <span className={`font-bold text-dark-grayish-blue hover:text-blue cursor-pointer desktop:font-extrabold`}>
+          {name}
+        </span>
+      </Link>
       <span className={``}>
       </span>
     </>
@@ -88,9 +96,11 @@ function NotificationPost({ name }: { name: string }) {
 function NotificationGroup({ name }: { name: string }) {
   return (
     <>
-      <span className={`font-bold text-blue cursor-pointer desktop:font-extrabold`}>
-        {name}
-      </span>
+      <Link href=''>
+        <span className={`font-bold text-blue cursor-pointer desktop:font-extrabold`}>
+          {name}
+        </span>
+      </Link>
       <span className={``}>
       </span>
     </>
@@ -175,13 +185,15 @@ function PMNotificationBody({props, unread }: { props: NotificationPMProps, unre
         </span>
         <UnreadIndicator unread={unread} />
       </div>
-      <NotificationTime when={when} />
-      <div className={twMerge(
-        `p-4 mt-[9px] rounded-[5px] border border-light-grayish-blue-2`,
-        `transition-colors hover:transition-colors desktop:p-5 hover:bg-light-grayish-blue-1 cursor-pointer`
-      )}>
-        {message}
-      </div>
+      <NotificationTime when={when} className={`mb-[9px]`} />
+      <Link href=''>
+        <div className={twMerge(
+          `p-4 rounded-[5px] border border-light-grayish-blue-2`,
+          `transition-colors hover:transition-colors desktop:p-5 hover:bg-light-grayish-blue-1 cursor-pointer`
+        )}>
+          {message}
+        </div>
+      </Link>
     </div>
   )
 }
@@ -201,9 +213,11 @@ function CommentNotificationBody({ props, unread }: { props: NotificationComment
           <NotificationTime when={when}/>
         </div>
         <div className={`flex-grow`} />
-        <div className={`relative shrink-0 w-10 h-10 desktop:w-[45px] desktop:h-[45px] cursor-pointer`}>
-          <Image src={imageURL} alt="image" fill={true}/>
-        </div>
+        <Link href={imageURL}>
+          <div className={`relative shrink-0 w-10 h-10 desktop:w-[45px] desktop:h-[45px]`}>
+            <Image src={imageURL} alt="image" fill={true}/>
+          </div>
+        </Link>
       </div>
   )
 }
@@ -247,12 +261,12 @@ function Title({numNotifications, className='', markReadCallback}: { numNotifica
        {numNotifications}
       </span>
       <span className={`flex-grow`} />
-      <span
+      <button
         className={`justify-self-end hover:text-blue cursor-pointer`}
         onClick={markReadCallback}
       >
         Mark all as read
-      </span>
+      </button>
     </div>
   )
 }
@@ -322,11 +336,11 @@ export default function Home() {
       `desktop:bg-very-light-grayish-blue desktop:text-[16px]`,
     )}>
       <div className={twMerge(
-        `flex flex-col items-center justify-center py-6`,
+        `flex flex-col items-center justify-center py-6 desktop:py-16`,
       )}>
         <div className={twMerge(
           `flex flex-col bg-white w-full max-w-[500px] px-4`,
-          `desktop:p-[30px] desktop:pb-0 desktop:w-[730px] desktop:max-w-[730px] desktop:shadow-card desktop:rounded-[15px] desktop:mt-16`
+          `desktop:p-[30px] desktop:pb-0 desktop:w-[730px] desktop:max-w-[730px] desktop:shadow-card desktop:rounded-[15px]`
         )}>
           <Title
             numNotifications={unread.filter((unread) => unread).length}
